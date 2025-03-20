@@ -1,0 +1,34 @@
+<program> = <block>
+
+<block> = { <statement>; }
+
+<statement> = <declaration> | <assignment> | <if> | <while> | <print>
+
+<declaration> = "var" identifier
+
+<assignment> = identifier "into" <expression>
+
+<if> = "if" <condition> "{" <block> "}"
+
+<while> = "while" <condition> "{" <block> "}"
+
+<print> = "print" <expression>
+
+<condition> = <condition term> { ( "&&" | "||" ) <condition term> }
+
+<condition term> = "(" <condition> ")"
+| <expression> <comparative operator> <expression>
+
+<expression> = <term> { <additive operator> <term> }
+
+<term> = <factor> { <multiplicative operator> <factor> }
+
+<factor> = [ <unary operator> ] ( number | string | identifier | "(" <expression> ")" )
+
+<unary operator> = "-" | "+" | "!"
+
+<additive operator> = "+" | "-"
+
+<multiplicative operator> = "*" | "/" | "%"
+
+<comparative operator> = "==" | "!=" | ">" | "<" | ">=" | "<="
