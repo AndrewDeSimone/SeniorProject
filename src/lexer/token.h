@@ -11,7 +11,6 @@ typedef enum {
     TOKEN_ADD_OP,            // "+" or "-"
     TOKEN_MULT_OP,           // "*", "/", "%"
     TOKEN_COMP_OP,           // "==", "!=", ">", "<", ">=", "<="
-    TOKEN_UNARY_OP,          // "-", "+", "!"
     TOKEN_LOGICAL_OP,        // "&&", "||"
     TOKEN_SYMBOL,            // "{", "}", "(", ")", ";"
     TOKEN_EOF,

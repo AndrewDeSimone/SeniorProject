@@ -1,26 +1,2 @@
-// Simple program demonstrating variables, loop, condition, and print
-
-var counter;
-var result;
-
-// Initialize counter to 0
-counter into 0;
-
-// Loop while counter < 5
-while (counter < 5) {
-    // Increment counter by 1
-    counter into counter + 1;
-    
-    // If counter is even, print "Even", else print "Odd"
-    if (counter % 2 == 0) {
-        print "Even";
-    } else {
-        print "Odd";
-    }
-
-    // Calculate result as counter * 2
-    result into counter * 2;
-    
-    // Print the result
-    print result;
-}
+var x
+x into 5;

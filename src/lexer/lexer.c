@@ -142,14 +142,6 @@ Token get_next_token(FILE *input) {
         return token;
     }
 
-    // Unary operators
-    if (ch == '!' || ch == '+' || ch == '-') {
-        op[0] = ch;
-        token.type = TOKEN_UNARY_OP;
-        strcpy(token.value, op);
-        return token;
-    }
-
     // Symbols
     if (strchr("{}();", ch)) {
         op[0] = ch;
