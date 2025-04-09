@@ -6,6 +6,7 @@ extern int yylex(void);
 extern int yyerror(const char *s);
 
 FILE *yyin;  // Declare yyin as a global file pointer
+FILE *output;
 %}
 
 %union {
@@ -26,7 +27,7 @@ program:
     ;
 
 vars:
-    NUMBER  { printf("Variable: %d\n", $1); }  // Printing the variable value
+    NUMBER  { fprintf(output, "\ta = %d;\n", $1); }  // Printing the variable value
     ;
 
 stmts:
@@ -35,12 +36,12 @@ stmts:
 
 multstmts:
     /* Empty */
-    | multstmts ASTERISK NUMBER  { printf("Multiplying by %d\n", $3); }
+    | multstmts ASTERISK NUMBER  { fprintf(output, "\ta *= %d;\n", $3); }
     ;
 
 addstmts:
     /* Empty */
-    | addstmts PLUS NUMBER  { printf("Adding %d\n", $3); }
+    | addstmts PLUS NUMBER  { fprintf(output, "\ta += %d;\n", $3); }
     ;
 
 %%
@@ -57,9 +58,13 @@ int main(int argc, char *argv[]) {
         perror("Error opening file");
         return 1;
     }
+    output = fopen("a.c", "w");
+    fprintf(output, "#include<stdio.h>\n int main(){ \n\tint a;\n");
 
     yyparse();  // Start parsing
     fclose(yyin);  // Close the file after parsing
+    fprintf(output, "\treturn 0; \n}");
+    fclose(output);
     return 0;
 }
 
